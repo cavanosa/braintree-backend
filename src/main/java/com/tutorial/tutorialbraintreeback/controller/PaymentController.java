@@ -1,5 +1,6 @@
 package com.tutorial.tutorialbraintreeback.controller;
 
+import com.tutorial.tutorialbraintreeback.dto.ClientTokenDto;
 import com.tutorial.tutorialbraintreeback.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class PaymentController {
     PaymentService paymentService;
 
     @GetMapping("/token")
-    public ResponseEntity<String> getToken() {
+    public ResponseEntity<ClientTokenDto> getToken() {
         return ResponseEntity.ok(paymentService.getToken());
     }
 }

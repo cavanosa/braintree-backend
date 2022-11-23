@@ -4,6 +4,7 @@ import com.braintreegateway.BraintreeGateway;
 import com.braintreegateway.ClientTokenRequest;
 import com.braintreegateway.Environment;
 import com.tutorial.tutorialbraintreeback.config.BraintreeConfig;
+import com.tutorial.tutorialbraintreeback.dto.ClientTokenDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,9 @@ public class PaymentService {
         );
     }
 
-    public String getToken() {
+    public ClientTokenDto getToken() {
         ClientTokenRequest request = new ClientTokenRequest();
-        return getGateway().clientToken().generate(request);
+        String token = getGateway().clientToken().generate(request);
+        return new ClientTokenDto(token);
     }
 }
